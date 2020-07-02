@@ -1,0 +1,40 @@
+<h1>Sign Up</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @user} %>
+
+<%=form_with model: @user, local: true do |f| %>
+
+  <div class="field">
+  <%=f.label :first_name%>
+  <%=f.text_field :first_name%>
+  </div>
+  <br><br>
+
+  <div class="field">
+  <%=f.label :last_name%>
+  <%=f.text_field :last_name%>
+  </div>
+  <br><br>
+
+  <div class="field">
+  <%=f.label :email%>
+  <%=f.email_field :email%>
+  </div>
+  <br><br>
+
+  <div class="field">
+  <%=f.label :Password%>
+  <%=f.password_field :password%>
+  </div>
+  <br><br>
+
+  <div class="field">
+  <%=f.label :Password_Confirmation%>
+  <%=f.password_field :password_confirmation%>
+  </div>
+  <br><br>
+
+  <div class="actions">
+  <%=f.submit%>
+  </div>
+<%end%>
