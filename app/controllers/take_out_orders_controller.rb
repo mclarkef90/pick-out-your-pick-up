@@ -1,0 +1,2 @@
+class TakeOutOrdersController < ApplicationController
+end
