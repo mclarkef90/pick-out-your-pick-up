@@ -1,0 +1,7 @@
+<h1>Edit Restaurant Profile</h1>
+
+<%= render partial: "layouts/errors", locals: {object: @restaurant}%>
+
+<%= render "form", restaurant: @restaurant%>
+
+<%=button_to "Delete", restaurant_path(@restaurant), method: :delete%>

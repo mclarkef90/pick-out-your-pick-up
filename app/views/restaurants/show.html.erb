@@ -1,0 +1,18 @@
+<h1><%=@restaurant.name%></h1>
+  <h2><%=@restaurant.genre.name%></h2>
+  <p><%=@restaurant.address_one%> <%=@restaurant.address_two%><br>
+  <%=@restaurant.city%>, <%=@restaurant.state%> <%=@restaurant.zipcode%></p>
+
+<%if @restaurant.user_id == current_user.id%>
+  <%=link_to "Edit", edit_restaurant_path(@restaurant)%>
+<%end%>
+<br><br>
+
+<h3>Menus</h3>
+
+<%@restaurant.menus.each do |menu|%>
+  <%= link_to menu.name, restaurant_menu_path(menu)%>
+  <%end%>
+  <br>
+
+<%=link_to "Add New Restaurant Menu", new_restaurant_menu_path(@restaurant)%>

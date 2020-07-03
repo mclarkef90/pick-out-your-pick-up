@@ -1,5 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :genre
+  belongs_to :user
   has_many :menus
   has_many :menu_items, through: :menus
   has_many :restaurant_reviews

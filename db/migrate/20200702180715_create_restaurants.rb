@@ -8,6 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.0]
       t.string :state
       t.string :zipcode
       t.integer :genre_id
+      t.integer :user_id
 
       t.timestamps
     end

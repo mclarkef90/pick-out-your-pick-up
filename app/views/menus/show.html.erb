@@ -1,0 +1,17 @@
+<h1>Menu</h1>
+
+<%=@menu.name%>
+<%@menu.menu_items.each do |menu_item| %>
+<h2><%= menu_item.name%></h2>
+<p><%= menu_item.description%><br>
+<%= menu_item.price%><br>
+Chef Specialty: <%= check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true %>
+Vegan: <%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true %>
+Available: <%= check_box_tag menu_item.available, menu_item.available, disabled: true%></p>
+
+<%end%>
+
+<%if @restaurant.user_id == session[:id]%>
+  <%=link_to "Edit", edit_restaurant_menu_path(@restaurant, @menu)%>
+<%end%>
+<br><br>
