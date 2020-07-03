@@ -13,7 +13,7 @@
 
     <div class= "navbar">
       <%if logged_in? %>
-
+      <%= link_to "Restaurants", restaurants_path%>
       <%= link_to "Sign Out", signout_path, method: 'delete' %>
 
       <%else%>

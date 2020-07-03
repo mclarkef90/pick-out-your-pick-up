@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_194806) do
     t.string "last_name"
     t.string "password_digest"
     t.string "email"
-    t.integer "staff_at_restaurant_id"
+    t.boolean "restaurant_owner", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

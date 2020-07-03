@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :password_digest
       t.string :email
-      t.integer :staff_at_restaurant_id
+      t.boolean :restaurant_owner, default: false
 
       t.timestamps
     end

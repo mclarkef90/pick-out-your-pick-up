@@ -20,9 +20,9 @@ slider=MenuItem.create([{name:"4 Sliders", description: "Pick 4 Sliders (Burger,
 wing=MenuItem.create([{name:"Crispy Smoked Wings", description: "Smoked then fried, tossed in desired sauce and served with homemade ranch", price: "6.00", chef_specialty: true, vegan: false, menu_id: 5}])
 
 #Users
-morgan= User.create([{first_name: "Morgan", last_name: "Farrow", password: "morgan", email: "morgan@aol.com", staff_at_restaurant_id: 1}])
+morgan= User.create([{first_name: "Morgan", last_name: "Farrow", password: "morgan", email: "morgan@aol.com", restaurant_owner: true}])
 brad= User.create([{first_name: "Brad", last_name: "Anderson", password: "brad", email: "brad@aol.com"}])
-maureen= User.create([{first_name: "Maureen", last_name: "Farrow", password: "maureen", email: "maureen@aol.com", staff_at_restaurant_id: 2}])
+maureen= User.create([{first_name: "Maureen", last_name: "Farrow", password: "maureen", email: "maureen@aol.com", restaurant_owner: true}])
 
 #Genres
 italian= Genre.create([{name: "Italian"}])

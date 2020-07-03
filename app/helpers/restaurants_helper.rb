@@ -57,6 +57,5 @@ module RestaurantsHelper
     ]
   end
 
-  ##<%= select_tag :state, options_for_select(us_states) %>
 
 end
