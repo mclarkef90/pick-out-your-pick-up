@@ -1,16 +1,15 @@
 class MenusController < ApplicationController
-    before_action :redirect_if_not_logged_in
-
-    before_action :set_menu, only: [:show, :edit, :update, :destroy]
+    before_action :set_menu, only: [:edit, :update, :destroy]
 
     def index
+      redirect_if_not_logged_in
       @restaurants=Restaurant.all
       @menus= Menu.all
     end
 
     def new
       if params[:restaurant_id] && @restaurant= Restaurant.find_by(id: params[:restaurant_id])
-            @menu= @restaurant.menus.build
+          @menu= @restaurant.menus.build
       else
         redirect_to home_path
         flash[:message]= "Action not permitted."
@@ -29,7 +28,8 @@ class MenusController < ApplicationController
     end
 
     def edit
-      redirect_to menus_path if !@menu || @menu.restaurant.user != current_user
+
+      redirect_to menus_path if @menu.restaurant.user_id != session[:user_id]
       flash[:message]= "Action not permitted."
     end
 
@@ -43,7 +43,7 @@ class MenusController < ApplicationController
     end
 
     def destroy
-      if @menu.user_id = current_user.id
+      if @menu.restaurant.user_id == session[:user_id]
         @menu.destroy
         redirect_to menus_path
       else
@@ -53,8 +53,7 @@ class MenusController < ApplicationController
     end
 
     def show
-      ###not sure but need to find
-      end
+        @menu= Menu.find_by(id: params[:id])
     end
 
     private
@@ -72,4 +71,4 @@ class MenusController < ApplicationController
       @menu= Menu.find_by(id: params[:id])
     end
 
-end
+  end

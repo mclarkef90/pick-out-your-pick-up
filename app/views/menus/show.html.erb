@@ -11,7 +11,7 @@ Available: <%= check_box_tag menu_item.available, menu_item.available, disabled:
 
 <%end%>
 
-<%if @restaurant.user_id == session[:id]%>
-  <%=link_to "Edit", edit_restaurant_menu_path(@restaurant, @menu)%>
+<%if @menu.restaurant.user_id == session[:user_id]%>
+  <%=link_to "Edit Menu", edit_menu_path(@menu)%>
 <%end%>
 <br><br>

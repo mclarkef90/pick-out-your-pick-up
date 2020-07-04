@@ -22,10 +22,10 @@ class RestaurantsController < ApplicationController
     else
       render :new
     end
-  end
+  end 
 
   def edit
-    redirect_to restaurants_path if !@restaurant || @restaurant.user != current_user
+    redirect_to restaurants_path if !@restaurant || @restaurant.user_id != session[:user_id]
     flash[:message]= "Action not permitted."
   end
 

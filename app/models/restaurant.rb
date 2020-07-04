@@ -1,7 +1,7 @@
 class Restaurant < ApplicationRecord
   belongs_to :genre
   belongs_to :user
-  has_many :menus
+  has_many :menus, dependent: :destroy
   has_many :menu_items, through: :menus
   has_many :restaurant_reviews
   has_many :users, through: :restaurant_reviews

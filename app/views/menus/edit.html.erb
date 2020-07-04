@@ -2,6 +2,32 @@
 
 <%= render partial: "layouts/errors", locals: {object: @menu}%>
 
-<%= render "form", restaurant: @menu%>
+<%= form_with model: @menu, local: true do |f| %>
 
-<%=button_to "Delete", restaurant_menu_path(@menu), method: :delete%>
+  <div class="field"%>
+    <%=f.label :restaurant_id%>
+    <%=f.collection_select :restaurant_id, Restaurant.all, :id, :name%><br>
+
+  <div class="field">
+    <%=f.label :name%>
+    <%=f.text_field :name%>
+  </div>
+  <br><br>
+
+  <div class="field">
+    <%=f.label :category%>
+    <%=f.select :category, ["Daily", "Breakfast/Brunch", "Lunch", "Happy Hour", "Dinner", "Dessert/Bakery"], {}, prompt: 'Select One' %>
+  </div>
+  <br><br>
+
+  <div class="field">
+    <%=f.label :details%>
+    <%=f.text_area :details%>
+  </div>
+  <br><br>
+
+  <%= f.submit%>
+
+<%end%>
+
+<%=button_to "Delete", menu_path(@menu), method: :delete%>

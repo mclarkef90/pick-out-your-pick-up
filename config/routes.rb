@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :menu_item_reviews
   resources :restaurant_reviews
   resources :menu_items
-  resources :menus, only: [:index]
+  resources :menus, only: [:index, :edit, :destroy]
   resources :restaurants do
-    resources :menus, only: [:new, :create, :edit, :update, :destroy, :show]
+    resources :menus, only: [:new, :create, :update, :show]
   end
   resources :genres
   resources :users

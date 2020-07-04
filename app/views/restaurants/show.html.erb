@@ -13,6 +13,8 @@
 <%@restaurant.menus.each do |menu|%>
   <%= link_to menu.name, restaurant_menu_path(menu)%>
   <%end%>
-  <br>
+  <br><br>
 
+<% if @restaurant.user_id == session[:user_id]%>
 <%=link_to "Add New Restaurant Menu", new_restaurant_menu_path(@restaurant)%>
+<%end%>
