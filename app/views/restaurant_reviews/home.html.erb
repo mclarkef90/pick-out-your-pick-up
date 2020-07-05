@@ -1,0 +1,10 @@
+<h1>Restaurant Reviews Home</h1>
+
+<%@restaurants.each do |restaurant|%>
+  <%=restaurant.name%>
+    <%restaurant.restaurant_reviews.each do |review|%>
+      <%=review.rating%><br>
+      <%=review.comment%><br>
+      <%=review.user.first_name%><br><br>
+  <%end%>
+<%end%>

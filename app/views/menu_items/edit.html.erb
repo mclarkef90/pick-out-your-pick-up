@@ -1,8 +1,8 @@
-<%="Add a Menu Item"%><br><br>
+<%="Edit Menu Item"%><br><br>
 
 <%= render partial: "layouts/errors", locals: {object: @menu_item}%>
 
-<%= form_with model: @menu_item, local: true, :url => menu_menu_items_path(@menu) do |f| %>
+<%= form_with model: @menu_item, local: true do |f| %>
 
   <div class="field">
    <%= f.label :name %>
@@ -29,10 +29,10 @@
 
   <%= f.label :available%>
   <%= f.check_box :available%>
-<br><br>
+  <br><br>
 
-  <%= f.hidden_field :menu_id, :value=> params[:menu_id]%>
-
-<%=f.submit%>
+  <%=f.submit%>
 
    <%end%>
+
+   <%=button_to "Delete", menu_item_path(@menu_item), method: :delete%>

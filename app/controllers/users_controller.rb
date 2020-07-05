@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user= User.new
   end
@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     redirect_if_not_logged_in
     @user= User.find_by(id: params[:id])
     redirect_to home_path if !@user
+  end
+
+  def owner_home
+    @restaurants= current_user.restaurants.all
   end
 
   private

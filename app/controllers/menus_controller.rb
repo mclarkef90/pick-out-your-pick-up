@@ -35,7 +35,7 @@ class MenusController < ApplicationController
     def update
       @menu.update(menu_params)
       if @menu.save
-        redirect_to menu_path(@menu)
+        redirect_to restaurant_menu_path(@menu.restaurant, @menu)
       else
         render :edit
       end

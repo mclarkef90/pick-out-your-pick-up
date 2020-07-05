@@ -1,6 +1,1 @@
 <h1>Welcome, <%= @user.first_name%></h1>
-
-<% if current_user && current_user.restaurant_owner?%>
-<%= link_to "Create Restaurant Profile", new_restaurant_path%>
-
-<%end%>

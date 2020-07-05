@@ -1,4 +1,5 @@
 class MenuItemsController < ApplicationController
+  before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -23,7 +24,6 @@ class MenuItemsController < ApplicationController
   end
 
   def edit
-    @menu_item= MenuItem.find_by(id: params[:id])
     redirect_to menus_path if @menu_item.menu.restaurant.user_id != session[:user_id]
     flash[:message]= "Action not permitted."
   end
@@ -31,14 +31,13 @@ class MenuItemsController < ApplicationController
   def update
     @menu_item.update(menu_item_params)
     if @menu_item.save
-      redirect_to menu_item_path(@menu_item)
+      redirect_to menu_menu_item_path(@menu_item.menu, @menu_item)
     else
       render :edit
     end
   end
 
   def destroy
-    @menu_item= MenuItem.find_by(id: params[:id])
     if @menu_item.menu.restaurant.user_id == session[:user_id]
       @menu_item.destroy
       redirect_to menus_path
@@ -49,7 +48,6 @@ class MenuItemsController < ApplicationController
   end
 
   def show
-    @menu_item= MenuItem.find_by(id: params[:id])
   end
 
   private
@@ -64,6 +62,10 @@ class MenuItemsController < ApplicationController
         :menu_id,
         :available
     )
+  end
+
+  def set_menu_item
+    @menu_item= MenuItem.find_by(id: params[:id])
   end
 
 end

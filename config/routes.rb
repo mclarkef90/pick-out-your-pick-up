@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/', to: 'application#home', as: 'home'
+  get '/users/owner_home', to: 'users#owner_home', as: 'owner_home'
+  get '/restaurant_reviews', to: 'restaurant_reviews#home', as: 'restaurant_reviews_home'
 
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
@@ -14,13 +16,16 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
   resources :genres
-  resources :users
+
   resources :carts
   resources :take_out_orders
   resources :menu_item_reviews
-  resources :restaurant_reviews
 
-  resources :menu_items, only: [:index, :edit, :update, :destroy]
+
+  resources :restaurant_reviews, only: [:edit, :update, :destroy]
+
+
+  resources :menu_items, only: [:index, :show, :edit, :update, :destroy]
 
   resources :menus, only: [:index, :edit, :update, :destroy] do
     resources :menu_items, only: [:new, :create, :show]
@@ -28,6 +33,12 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     resources :menus, only: [:new, :create, :show]
+    resources :restaurant_reviews, only: [:index, :new, :create, :show]
+  end
+
+  resources :users do
+    resources :restaurant_reviews, only: [:index]
+    resources :menu_item_reviews, only: [:index]
   end
 
 

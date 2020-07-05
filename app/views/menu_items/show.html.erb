@@ -1,6 +1,14 @@
-<%=@menu_item.name%>
+<h1><%=@menu_item.name%></h1>
+<%@menu_item.description%><br>
+<%=@menu_item.price%><br>
+Chef Specialty: <%= check_box_tag @menu_item.chef_specialty, @menu_item.chef_specialty, disabled: true %>
+Vegan: <%= check_box_tag @menu_item.vegan, @menu_item.vegan, disabled: true %>
+Available: <%= check_box_tag @menu_item.available, @menu_item.available, disabled: true%></p>
 
-<%if @menu_item.menu.restaurant.user_id == session[:user_id]%>
+
+<%=link_to "Add Another Menu Item", new_menu_menu_item_path(@menu_item.menu, @menu_item)%><br>
+
+<%if @menu_item.menu.restaurant.user_id == session[:user_id]%><br>
   <%=link_to "Edit Menu_Item", edit_menu_item_path(@menu_item)%>
 <%end%>
 <br><br>
