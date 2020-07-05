@@ -1,14 +1,17 @@
 <h1>All Restaurant Reviews for:</h1>
 
 <% if @restaurant != nil%>
-  <%= @restaurant.name%>
+<h1>  <%= @restaurant.name%></h1>
 <%else @user != nil%>
-  <%= @user.first_name%>
+<h1>  <%= @user.first_name%> </h1>
   <%end%>
 
 <br>
 <%@restaurant_reviews.each do |review|%>
       <%=review.rating%><br>
       <%=review.comment%><br>
-      <%=review.user.first_name%><br><br>
+      <%=review.user.first_name%><br>
+      <%=link_to "Edit", edit_restaurant_review_path(review)%>
+      <%=link_to "Delete Restaurant Review", restaurant_review_path(review), method: :delete%>
+      <br><br>
 <%end%>

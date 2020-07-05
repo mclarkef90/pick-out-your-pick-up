@@ -15,6 +15,11 @@
   <%end%>
   <br><br>
 
+<%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
+
+<h3><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></h3>
+
+
 <% if @restaurant.user_id == session[:user_id]%>
 <%=link_to "Add New Restaurant Menu", new_restaurant_menu_path(@restaurant)%>
 <%end%>
