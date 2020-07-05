@@ -13,16 +13,23 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
+  resources :genres
+  resources :users
   resources :carts
   resources :take_out_orders
   resources :menu_item_reviews
   resources :restaurant_reviews
-  resources :menu_items
-  resources :menus, only: [:index, :edit, :destroy]
-  resources :restaurants do
-    resources :menus, only: [:new, :create, :update, :show]
+
+  resources :menu_items, only: [:index, :edit, :update, :destroy]
+
+  resources :menus, only: [:index, :edit, :update, :destroy] do
+    resources :menu_items, only: [:new, :create, :show]
   end
-  resources :genres
-  resources :users
+
+  resources :restaurants do
+    resources :menus, only: [:new, :create, :show]
+  end
+
+
 
 end

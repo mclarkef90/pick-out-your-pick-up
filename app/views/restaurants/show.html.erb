@@ -11,7 +11,7 @@
 <h3>Menus</h3>
 
 <%@restaurant.menus.each do |menu|%>
-  <%= link_to menu.name, restaurant_menu_path(menu)%>
+  <%= link_to menu.name, restaurant_menu_path(@restaurant, menu)%>
   <%end%>
   <br><br>
 

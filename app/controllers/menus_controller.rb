@@ -28,7 +28,6 @@ class MenusController < ApplicationController
     end
 
     def edit
-
       redirect_to menus_path if @menu.restaurant.user_id != session[:user_id]
       flash[:message]= "Action not permitted."
     end
@@ -53,7 +52,7 @@ class MenusController < ApplicationController
     end
 
     def show
-        @menu= Menu.find_by(id: params[:id])
+      @menu= Menu.find_by(id: params[:id])
     end
 
     private

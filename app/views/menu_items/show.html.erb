@@ -1,0 +1,6 @@
+<%=@menu_item.name%>
+
+<%if @menu_item.menu.restaurant.user_id == session[:user_id]%>
+  <%=link_to "Edit Menu_Item", edit_menu_item_path(@menu_item)%>
+<%end%>
+<br><br>

@@ -1,0 +1,38 @@
+<%="Add Menu Items"%><br><br>
+
+<%= render partial: "layouts/errors", locals: {object: @menu_item}%>
+
+<%= form_with model: @menu_item, local: true, :url => menu_menu_items_path(@menu) do |f| %>
+
+  <div class="field">
+   <%= f.label :name %>
+   <%= f.text_field :name %>
+   <br><br>
+
+  <div class="field">
+   <%= f.label :description %>
+   <%= f.text_field :description %>
+    <br><br>
+
+  <div class="field">
+   <%= f.label :price%>
+   <%= f.number_field :price%>
+    <br><br>
+
+  <%= f.label :chef_specialty%>
+  <%= f.check_box :chef_specialty%>
+    <br><br>
+
+    <%= f.label :vegan%>
+    <%= f.check_box :vegan%>
+  <br><br>
+
+  <%= f.label :available%>
+  <%= f.check_box :available%>
+<br><br>
+
+  <%= f.hidden_field :menu_id, :value=> params[:menu_id]%>
+
+<%=f.submit%>
+
+   <%end%>
