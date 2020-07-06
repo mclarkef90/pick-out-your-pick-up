@@ -3,7 +3,9 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants= Restaurant.all
+    @restaurants= Restaurant.alpha.all
+    @restaurants = @restaurants.search(params[:q].downcase) if params[:q] && !params[:q].empty?
+    @restaurants = @restaurants.genrefilter(params[:restaurant][:genre_id]) if params[:restaurant] && params[:restaurant][:genre_id] != ""
   end
 
   def new
@@ -22,7 +24,7 @@ class RestaurantsController < ApplicationController
     else
       render :new
     end
-  end 
+  end
 
   def edit
     redirect_to restaurants_path if !@restaurant || @restaurant.user_id != session[:user_id]

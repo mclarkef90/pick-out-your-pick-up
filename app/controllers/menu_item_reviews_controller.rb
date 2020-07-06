@@ -5,6 +5,7 @@ class MenuItemReviewsController < ApplicationController
       @menu_item_reviews = @menu_item.menu_item_reviews
     elsif params[:user_id] && @user= User.find_by(id: params[:user_id])
       @menu_item_reviews= @user.menu_item_reviews
+    
     else
       @menu_item_reviews= MenuItemReview.all
     end
@@ -68,4 +69,5 @@ class MenuItemReviewsController < ApplicationController
       :comment
     )
   end
+
 end

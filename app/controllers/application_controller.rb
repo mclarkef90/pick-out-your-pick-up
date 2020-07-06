@@ -19,8 +19,12 @@ class ApplicationController < ActionController::Base
   end
 
   def restaurant_owner?
-    !!current_user.restaurant_owner
+    if logged_in?
+      !!current_user.restaurant_owner
+    end
   end
+
+
 
 
 end
