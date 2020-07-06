@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'application#home', as: 'home'
   get '/users/owner_home', to: 'users#owner_home', as: 'owner_home'
-  get '/restaurant_reviews', to: 'restaurant_reviews#home', as: 'restaurant_reviews_home'
+  get '/restaurant_reviews/home', to: 'restaurant_reviews#home', as: 'restaurant_reviews_home'
 
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :menu_item_reviews, only: [:index, :edit, :update, :destroy]
 
 
-  resources :restaurant_reviews, only: [:edit, :update, :destroy]
+  resources :restaurant_reviews, only: [:index, :edit, :update, :destroy]
 
 
   resources :menu_items, only: [:index, :show, :edit, :update, :destroy] do

@@ -1,8 +1,7 @@
 class RestaurantReviewsController < ApplicationController
 
   def home
-    @restaurants= Restaurant.all
-    @restaurant_reviews= RestaurantReview.all
+    
   end
 
   def index

@@ -1,10 +1,19 @@
-<h1>Restaurant Reviews Home</h1>
+<h1>Top Rated</h1>
 
-<%@restaurants.each do |restaurant|%>
-  <%=restaurant.name%>
-    <%restaurant.restaurant_reviews.each do |review|%>
-      <%=review.rating%><br>
-      <%=review.comment%><br>
-      <%=review.user.first_name%><br><br>
+<h2>Restaurants:</h2>
+<%RestaurantReview.top_three.each do |review| %>
+  <%restid= review[0]%>
+  <%avgrate= review[1]%>
+  <%restaurant= Restaurant.find_by(id: restid)%>
+  <h3><%=link_to restaurant.name, restaurant_path(restaurant)%> | <%=avgrate%></h3>
   <%end%>
-<%end%>
+
+<h2>Food:</h2>
+<%MenuItemReview.top_three.each do |review| %>
+  <%itemid= review[0]%>
+  <%avgrate= review[1]%>
+  <%menu_item= MenuItem.find_by(id: itemid)%>
+  <h3><%=link_to menu_item.name, menu_item_path(menu_item)%> | <%=avgrate%></h3>
+  <%end%>
+
+<h1>Most Ordered</h1>

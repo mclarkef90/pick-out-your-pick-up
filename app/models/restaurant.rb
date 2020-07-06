@@ -16,4 +16,6 @@ class Restaurant < ApplicationRecord
     def self.search(params)
       where("LOWER(restaurants.name) LIKE :term OR LOWER(restaurants.city) LIKE :term OR LOWER(restaurants.state) LIKE :term OR LOWER(restaurants.zipcode) LIKE :term", term: "%#{params}%")
     end
+
+    
 end

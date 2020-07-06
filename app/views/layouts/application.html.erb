@@ -14,7 +14,7 @@
     <div class= "navbar">
 
       <% if logged_in? && restaurant_owner? %>
-      <%= link_to "Restaurants", restaurants_path%>
+      <%= link_to "Search Restaurants", restaurants_path%>
       <%= link_to "Menus", menus_path%>
       <%= link_to "Reviews", restaurant_reviews_home_path%>
       <%= link_to "Manage Your Restaurant Reviews", user_restaurant_reviews_path(current_user.id)%>
@@ -23,8 +23,8 @@
       <%= link_to "Sign Out", signout_path, method: 'delete' %>
 
       <%elsif logged_in? %>
-      <%= link_to "Restaurants", restaurants_path%>
-      <%= link_to "Menus", menus_path%>
+      <%= link_to "Search Restaurants", restaurants_path%>
+      <%= link_to "Top Rated", restaurant_reviews_home_path%>
       <%= link_to "Reviews", restaurant_reviews_home_path%>
       <%= link_to "Sign Out", signout_path, method: 'delete' %>
 

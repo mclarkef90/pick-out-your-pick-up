@@ -4,4 +4,16 @@ class RestaurantReview < ApplicationRecord
   validates :rating, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
   validates :comment, presence: true
 
+
+  def self.last_three
+    all.order(created_at: :desc).limit(3)
+  end
+
+  def self.five_star
+    where("rating = 5")
+  end
+
+  def self.top_three
+    all.group(:restaurant_id).average(:rating).first(3)
+  end
 end
