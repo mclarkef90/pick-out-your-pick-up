@@ -19,13 +19,16 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :take_out_orders
-  resources :menu_item_reviews
+
+  resources :menu_item_reviews, only: [:index, :edit, :update, :destroy]
 
 
   resources :restaurant_reviews, only: [:edit, :update, :destroy]
 
 
-  resources :menu_items, only: [:index, :show, :edit, :update, :destroy]
+  resources :menu_items, only: [:index, :show, :edit, :update, :destroy] do
+    resources :menu_item_reviews, only: [:index, :new, :create, :show]
+  end
 
   resources :menus, only: [:index, :edit, :update, :destroy] do
     resources :menu_items, only: [:new, :create, :show]

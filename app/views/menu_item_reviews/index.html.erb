@@ -1,0 +1,17 @@
+<h1>All Menu Item Reviews for:</h1>
+
+<% if @menu_item != nil%>
+<h1>  <%= @menu_item.name%></h1>
+<%else @user != nil%>
+<h1>  <%= @user.first_name%> </h1>
+  <%end%>
+
+<br>
+<%@menu_item_reviews.each do |review|%>
+      <%=review.rating%><br>
+      <%=review.comment%><br>
+      <%=review.user.first_name%><br>
+      <%=link_to "Edit", edit_menu_item_review_path(review)%>
+      <%=link_to "Delete Menu Item Review", menu_item_review_path(review), method: :delete%>
+      <br><br>
+<%end%>
