@@ -23,11 +23,37 @@
   <h2>Sorry, no restaurants matched your search. Try again. </h2>
 
 <%else%>
-<% @restaurants.each do |restaurant| %>
-  <h3>
-    <%= link_to restaurant.name, restaurant_path(restaurant) %> -
-    <%= restaurant.city%>, <%=restaurant.state%> -
-    <%= link_to "Rating:", restaurant_review_path(restaurant)%>
-  </h3>
-<%end%>
-<%end%>
+
+
+
+<div class='container-fluid'>
+      <p id="notice"><%= notice %></p>
+      <div class='row py-3 px-3'>
+        <div class='col-12 col-sm-8'>
+          <table id='restaurant-index-table' class="table table-hover">
+            <thead  class="thead-light">
+              <tr>
+                <th>Restaurant Name</th>
+                <th>Location</th>
+                <th>Average Rating <br>(out of 5)</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @restaurants.each do |restaurant| %>
+                <tr>
+                  <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+                  <td><%= restaurant.city%>, <%=restaurant.state%></td>
+                  <td><%=restaurant.restaurant_reviews.average(:rating)%></td>
+                  </tr>
+                <%end%>
+
+
+            </tbody>
+          </table>
+          <br>
+        </div>
+
+
+        <%end%>

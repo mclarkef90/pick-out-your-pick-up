@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_194806) do
   create_table "menu_items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.float "price"
+    t.string "price"
     t.boolean "chef_specialty", default: false
     t.boolean "vegan", default: false
     t.integer "menu_id"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_194806) do
     t.integer "cart_id"
     t.integer "menu_item_id"
     t.integer "quantity"
-    t.float "subtotal"
+    t.string "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

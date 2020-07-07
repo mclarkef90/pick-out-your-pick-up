@@ -8,4 +8,8 @@ class MenuItemReview < ApplicationRecord
     all.group(:menu_item_id).average(:rating).first(3)
   end
 
+  def self.top_item
+    all.group(:menu_item_id).average(:rating).first
+  end
+
 end

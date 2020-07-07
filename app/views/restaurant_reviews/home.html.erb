@@ -13,7 +13,7 @@
   <%itemid= review[0]%>
   <%avgrate= review[1]%>
   <%menu_item= MenuItem.find_by(id: itemid)%>
-  <h3><%=link_to menu_item.name, menu_item_path(menu_item)%> | <%=avgrate%></h3>
+  <h3><%=link_to menu_item.name, menu_item_review_path(itemid)%> | <%=avgrate%></h3>
   <%end%>
 
 <h1>Most Ordered</h1>

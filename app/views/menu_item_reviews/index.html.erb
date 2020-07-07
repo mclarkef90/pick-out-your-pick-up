@@ -7,14 +7,6 @@
   <%end%>
 
 <br>
-<%@menu_item_reviews.each do |review|%>
-      <%=review.rating%><br>
-      <%=review.comment%><br>
-      <%=review.user.first_name%><br>
-      <%=link_to "Edit", edit_menu_item_review_path(review)%>
-      <%=link_to "Delete Menu Item Review", menu_item_review_path(review), method: :delete%>
-      <br><br>
-<%end%>
 
 <div class='container-fluid'>
       <p id="notice"><%= notice %></p>
@@ -23,12 +15,10 @@
           <table id='menu-item-reviews-table' class="table table-hover">
             <thead  class="thead-light">
               <tr>
-
+                <th>Date</th>
+                <th>User</th>
                 <th>Rating</th>
                 <th>Comment</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -37,13 +27,11 @@
 
                 <tr>
                   <% @menu_item_reviews.each do |review| %>
-                  
+                  <td><%= review.created_at.strftime("%m/%Y")%></td>
+                  <td><%= review.user.first_name %></td>
                   <td><%= review.rating %></td>
                   <td><%= review.comment %></td>
-                  <td><%= link_to "Show", menu_item_menu_item_review_path(review.menu_item_id, review) %></td>
-                  <td><%= link_to 'Edit', edit_menu_item_review_path(review) %></td>
-                  <td><%= link_to 'Delete', menu_item_review_path(review), method: :delete%></td>
-                </tr>
+                  </tr>
               <% end %>
             </tbody>
           </table>

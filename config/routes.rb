@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :take_out_orders
 
-  resources :menu_item_reviews, only: [:index, :edit, :update, :destroy]
+  resources :menu_item_reviews, only: [:index, :show, :edit, :update, :destroy]
 
 
   resources :restaurant_reviews, only: [:index, :edit, :update, :destroy]

@@ -2,12 +2,13 @@
 
 <%=@menu.name%>
 <%@menu.menu_items.each do |menu_item| %>
-<h2><%= link_to menu_item.name, menu_menu_item_path(@menu, menu_item)%></h2>
+<p><%= menu_item.name%> - Rating: <%=link_to menu_item.menu_item_reviews.average(:rating), menu_item_menu_item_reviews_path(menu_item)%></p>
 <p><%= menu_item.description%><br>
-<%= menu_item.price%><br>
+$<%= menu_item.price%><br>
 Chef Specialty: <%= check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true %>
 Vegan: <%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true %>
 Available: <%= check_box_tag menu_item.available, menu_item.available, disabled: true%></p>
+<p><%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%></p>
 <%end%>
 <br>
 

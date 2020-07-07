@@ -4,7 +4,7 @@ class CreateTakeOutOrders < ActiveRecord::Migration[6.0]
       t.integer :cart_id
       t.integer :menu_item_id
       t.integer :quantity
-      t.float :subtotal
+      t.string :subtotal
 
       t.timestamps
     end

@@ -13,3 +13,104 @@
  *= require_tree .
  *= require_self
  */
+
+
+body{
+  font-family: Geneva;
+
+}
+
+.title {
+  background-image: url(main.jpg);
+  background-position: 100%;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  font-family: Courier New;
+  font-size: 22px;
+}
+
+ .navbar {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+   border: none;
+   background-color: black;
+   color: white;
+   overflow: auto;
+   text-align: center;
+}
+
+.navbar ul {
+  display: table-row;
+}
+
+.navbar li {
+  display: table-cell;
+}
+
+.navbar a {
+  font-family: Geneva;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid blue;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+h2, h3 {
+  font-family: Geneva;
+  text-align: center;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.field{
+  color: red;
+}
+
+.action{
+
+}
+
+table {
+  table-layout: auto;
+  width: auto;
+  margin-left:auto;
+  margin-right:auto;
+  border: 1px solid black;
+}
+
+td {
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}

@@ -11,30 +11,38 @@
 
   <body>
 
+    <body>
+    <div class= "title">
+      <h1>Pick Out <br> Your Pick Up Order</h1>
+    </div>
+
     <div class= "navbar">
 
       <% if logged_in? && restaurant_owner? %>
-      <%= link_to "Search Restaurants", restaurants_path%>
-      <%= link_to "Menus", menus_path%>
-      <%= link_to "Reviews", restaurant_reviews_home_path%>
-      <%= link_to "Manage Your Restaurant Reviews", user_restaurant_reviews_path(current_user.id)%>
-      <%= link_to "Manage Your Food Reviews", user_menu_item_reviews_path(current_user.id)%>
-      <%= link_to "Manage Your Restaurants", owner_home_path %>
-      <%= link_to "Sign Out", signout_path, method: 'delete' %>
+      <ul>
+    <li>  <%= link_to "Search Restaurants", restaurants_path%></li>
+    <li>   <%= link_to "Top Rated", restaurant_reviews_home_path%></li>
+    <li>   <%= link_to "Your Reviews", user_restaurant_reviews_path(current_user.id)%></li>
+    <li>   <%= link_to "Manage Your Restaurants", owner_home_path %></li>
+    <li>   <%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+      </ul>
 
       <%elsif logged_in? %>
-      <%= link_to "Search Restaurants", restaurants_path%>
-      <%= link_to "Top Rated", restaurant_reviews_home_path%>
-      <%= link_to "Reviews", restaurant_reviews_home_path%>
-      <%= link_to "Sign Out", signout_path, method: 'delete' %>
+      <ul>
+    <li>   <%= link_to "Search Restaurants", restaurants_path%></li>
+    <li>   <%= link_to "Top Rated", restaurant_reviews_home_path%></li>
+    <li>   <%= link_to "Your Reviews", user_restaurant_reviews_path(current_user.id)%></li>
+    <li>   <%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+      </ul>
 
 
 
       <%else%>
-      <%= link_to "Sign Up", signup_path%> |
-      <%= link_to "Sign In", signin_path%> |
-      <%= link_to "Google Sign Up/In", '/auth/google_oauth2'%> |
-
+      <ul>
+      <li> <%= link_to "Sign Up", signup_path%></li>
+      <li> <%= link_to "Sign In", signin_path%></li>
+      <li> <%= link_to "Google Sign Up/In", '/auth/google_oauth2'%></li>
+      </ul>
       <%end%>
     </div>
 
@@ -45,6 +53,8 @@
 
       <%=@error%>
       </div>
+
     <%= yield %>
+
   </body>
 </html>

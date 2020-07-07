@@ -5,7 +5,6 @@ class MenuItemReviewsController < ApplicationController
       @menu_item_reviews = @menu_item.menu_item_reviews
     elsif params[:user_id] && @user= User.find_by(id: params[:user_id])
       @menu_item_reviews= @user.menu_item_reviews
-    
     else
       @menu_item_reviews= MenuItemReview.all
     end
@@ -55,8 +54,8 @@ class MenuItemReviewsController < ApplicationController
   end
 
   def show
-    @menu_item= MenuItem.find_by(id: params[:menu_item_id])
     @menu_item_review= MenuItemReview.find_by(id: params[:id])
+    @menu_item= MenuItem.find_by(id: @menu_item_review.menu_item_id)
   end
 
   private

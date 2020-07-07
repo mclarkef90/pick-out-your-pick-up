@@ -1,7 +1,6 @@
 class RestaurantReviewsController < ApplicationController
 
   def home
-    
   end
 
   def index
@@ -60,7 +59,7 @@ class RestaurantReviewsController < ApplicationController
 
   def show
     @restaurant= Restaurant.find_by(id: params[:restaurant_id])
-    @restaurant_review= RestaurantReview.find_by(id: params[:restaurant_review_id])
+    @restaurant_review= RestaurantReview.find_by(id: params[:id])
   end
 
   private
