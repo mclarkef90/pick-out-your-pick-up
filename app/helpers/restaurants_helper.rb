@@ -57,5 +57,4 @@ module RestaurantsHelper
     ]
   end
 
-
 end

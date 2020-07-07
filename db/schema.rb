@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_194806) do
+ActiveRecord::Schema.define(version: 2020_07_02_181131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "carts", force: :cascade do |t|
-    t.integer "user_id"
-    t.boolean "ordered", default: false
-    t.boolean "fulfilled", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -52,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_07_02_194806) do
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
-    t.string "category"
     t.text "details"
     t.integer "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
@@ -77,15 +68,6 @@ ActiveRecord::Schema.define(version: 2020_07_02_194806) do
     t.string "zipcode"
     t.integer "genre_id"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "take_out_orders", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "menu_item_id"
-    t.integer "quantity"
-    t.string "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,59 +1,47 @@
 <h1>Restaurants</h1>
 
-<%=form_tag("/restaurants", method: 'get') do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<%end%>
+  <%=form_tag("/restaurants", method: 'get') do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <%end%>
 
 <br>
 <br>
 
-<%= form_tag("/restaurants", method: 'get') do %>
-  <%= label_tag(:genre_id, "Select a Genre:") %>
-  <%= collection_select(:restaurant, :genre_id, Genre.all,:id, :name) %>
-  <%= submit_tag("Filter") %>
-<% end %>
+  <%= form_tag("/restaurants", method: 'get') do %>
+    <%= label_tag(:genre_id, "Select a Genre:") %>
+    <%= collection_select(:restaurant, :genre_id, Genre.all,:id, :name) %>
+    <%= submit_tag("Filter") %>
+  <% end %>
+
 <br>
 <%=link_to "Clear Search/Filter Results", restaurants_path%>
 
-<br><br>
+<br>
+<br>
 
-<% if @restaurants.blank? %>
-  <h2>Sorry, no restaurants matched your search. Try again. </h2>
+  <% if @restaurants.blank? %>
+    <h2>Sorry, no restaurants matched your search. Try again. </h2>
+  <%else%>
+    <p id="notice"><%= notice %></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Restaurant Name</th>
+            <th>Location</th>
+            <th>Average Rating <br>(out of 5)</th>
+          </tr>
+        </thead>
 
-<%else%>
-
-
-
-<div class='container-fluid'>
-      <p id="notice"><%= notice %></p>
-      <div class='row py-3 px-3'>
-        <div class='col-12 col-sm-8'>
-          <table id='restaurant-index-table' class="table table-hover">
-            <thead  class="thead-light">
-              <tr>
-                <th>Restaurant Name</th>
-                <th>Location</th>
-                <th>Average Rating <br>(out of 5)</th>
-                <th colspan="3"></th>
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+              <td><%= restaurant.city%>, <%=restaurant.state%></td>
+              <td><%=restaurant.restaurant_reviews.average(:rating)%></td>
               </tr>
-            </thead>
-
-            <tbody>
-              <% @restaurants.each do |restaurant| %>
-                <tr>
-                  <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
-                  <td><%= restaurant.city%>, <%=restaurant.state%></td>
-                  <td><%=restaurant.restaurant_reviews.average(:rating)%></td>
-                  </tr>
-                <%end%>
-
-
-            </tbody>
-          </table>
-          <br>
-        </div>
-
-
-        <%end%>
+            <%end%>
+        </tbody>
+      </table>
+  <%end%>

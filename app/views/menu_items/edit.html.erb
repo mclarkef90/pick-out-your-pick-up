@@ -1,38 +1,38 @@
 <%="Edit Menu Item"%><br><br>
 
-<%= render partial: "layouts/errors", locals: {object: @menu_item}%>
+  <%= render partial: "layouts/errors", locals: {object: @menu_item}%>
 
-<%= form_with model: @menu_item, local: true do |f| %>
+  <%= form_with model: @menu_item, local: true do |f| %>
 
-  <div class="field">
-   <%= f.label :name %>
-   <%= f.text_field :name %>
-   <br><br>
+    <div class="field">
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-   <%= f.label :description %>
-   <%= f.text_field :description %>
-    <br><br>
+    <div class="field">
+     <%= f.label :description %>
+     <%= f.text_area :description %>
+    </div>
 
-  <div class="field">
-   <%= f.label :price%>
-   <%= f.text_field :price%>
-    <br><br>
+    <div class="field">
+     <%= f.label :price%>
+     <%= f.text_field :price%>
+    </div>
 
-  <%= f.label :chef_specialty%>
-  <%= f.check_box :chef_specialty%>
+    <%= f.label :chef_specialty%>
+    <%= f.check_box :chef_specialty%>
     <br><br>
 
     <%= f.label :vegan%>
     <%= f.check_box :vegan%>
-  <br><br>
+    <br><br>
 
-  <%= f.label :available%>
-  <%= f.check_box :available%>
-  <br><br>
+    <%= f.label :available%>
+    <%= f.check_box :available%>
+    <br><br>
 
-  <%=f.submit%>
+    <%=f.submit%>
 
-   <%end%>
+  <%end%>
 
-   <%=button_to "Delete", menu_item_path(@menu_item), method: :delete%>
+  <%=button_to "Delete", menu_item_path(@menu_item), method: :delete%>

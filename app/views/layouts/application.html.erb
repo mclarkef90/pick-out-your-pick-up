@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>POPU</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <html>
+    <head>
+      <title>POPU</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class= "title">
       <h1>Pick Out <br> Your Pick Up Order</h1>
     </div>
-    
+
     <div class= "navbar">
       <% if logged_in? && restaurant_owner? %>
         <ul>

@@ -6,11 +6,10 @@
 
   <p>Average Rating (out of 5):
    <%if @restaurant.restaurant_reviews.average(:rating) != nil%>
-   <%=link_to @restaurant.restaurant_reviews.average(:rating), restaurant_restaurant_reviews_path(@restaurant)%>
+     <%=link_to @restaurant.restaurant_reviews.average(:rating), restaurant_restaurant_reviews_path(@restaurant)%>
   <%else%>
-  <%=link_to "Add the First Rating", new_restaurant_restaurant_review_path(@restaurant)%>
+    <%=link_to "Add the First Rating", new_restaurant_restaurant_review_path(@restaurant)%>
   <%end%></p>
-
 
   <%if @restaurant.user_id == current_user.id%>
     <%=link_to "Edit", edit_restaurant_path(@restaurant)%><br>
@@ -19,12 +18,12 @@
 
 <h1>Menus</h1>
 
-<%@restaurant.menus.each do |menu|%>
-  <p><%= link_to menu.name, restaurant_menu_path(@restaurant, menu)%></p>
+  <%@restaurant.menus.each do |menu|%>
+    <p><%= link_to menu.name, restaurant_menu_path(@restaurant, menu)%></p>
   <%end%>
 
-<% if @restaurant.user_id == session[:user_id]%>
-<%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
-<% else%>
-<p><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></p>
-<%end%>
+  <% if @restaurant.user_id == session[:user_id]%>
+    <%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
+  <% else%>
+    <p><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></p>
+  <%end%>

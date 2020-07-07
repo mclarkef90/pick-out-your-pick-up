@@ -45,8 +45,8 @@ class UsersController < ApplicationController
 
   def reviews
     redirect_if_not_logged_in
-    @restaurant_reviews= current_user.restaurant_reviews.all
-    @menu_item_reviews= current_user.menu_item_reviews.all
+    @restaurant_reviews= current_user.restaurant_reviews.newest.all
+    @menu_item_reviews= current_user.menu_item_reviews.newest.all
   end
 
   private

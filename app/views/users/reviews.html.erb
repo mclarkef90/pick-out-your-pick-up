@@ -1,6 +1,7 @@
 <h1>Reviews by YOU!</h1>
+
 <h2>Restaurant Reviews</h2>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
     <table>
       <thead>
         <tr>
@@ -15,14 +16,10 @@
 
       <tbody>
         <% @restaurant_reviews.each do |review| %>
+
           <tr>
-            <td><%= review.created_at.strftime("%m/%Y")%></td>
-            <td>
-              <%Restaurant.all.map do |restaurant| %>
-                <%if restaurant.id == review.restaurant_id%>
-                  <%=restaurant.name%>
-                <%end%>
-              <%end%>
+            <td><%= review.created_at.strftime("%m/%d/%Y")%></td>
+            <td><%=review.restaurant.name%></td>
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>
             <td><%= link_to 'Edit', edit_restaurant_review_path(review) %></td>
@@ -31,38 +28,33 @@
           </tr>
       </tbody>
     </table>
-    <br>
-  </div>
 
 <h2>Menu Item Reviews</h2>
   <p id="notice"><%= notice %></p>
-
-      <table>
-        <thead">
-          <tr>
-            <th>Date</th>
-            <th>Resturant</th>
-            <th>Item</th>
-            <th>Rating</th>
-            <th>Comment</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
+    <table>
+      <thead">
+        <tr>
+          <th>Date</th>
+          <th>Resturant</th>
+          <th>Item</th>
+          <th>Rating</th>
+          <th>Comment</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
 
         <tbody>
-            <tr>
-              <% @menu_item_reviews.each do |review| %>
-              <td><%= review.created_at.strftime("%m/%Y")%></td>
-              <td><%= review.menu_item.menu.restaurant.name %></td>
-              <td><%= review.menu_item.name %></td>
-              <td><%= review.rating %></td>
-              <td><%= review.comment %></td>
-              <td><%= link_to 'Edit', edit_menu_item_review_path(review) %></td>
-              <td><%= link_to 'Delete', menu_item_review_path(review), method: :delete%></td>
-              </tr>
+          <tr>
+            <% @menu_item_reviews.each do |review| %>
+            <td><%= review.created_at.strftime("%m/%d/%Y")%></td>
+            <td><%= review.menu_item.menu.restaurant.name %></td>
+            <td><%= review.menu_item.name %></td>
+            <td><%= review.rating %></td>
+            <td><%= review.comment %></td>
+            <td><%= link_to 'Edit', edit_menu_item_review_path(review) %></td>
+            <td><%= link_to 'Delete', menu_item_review_path(review), method: :delete%></td>
+          </tr>
           <% end %>
         </tbody>
       </table>
-      <br>
-    </div>

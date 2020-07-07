@@ -37,12 +37,11 @@
 
   <div class="field">
     <%=f.label :genre%>
-    <%=f.collection_select :genre_id, Genre.all, :id, :name%>
+    <%=f.collection_select :genre_id, Genre.alpha.all, :id, :name%>
   </div>
   <br><br>
 
   <%= f.hidden_field :user_id, :value=> session[:user_id] %><br>
-
 
   <%= f.submit%>
 

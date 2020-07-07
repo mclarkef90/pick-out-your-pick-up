@@ -1,35 +1,24 @@
 <h1>All Menu Item Reviews for:</h1>
+<h1><%= @menu_item.name%></h1>
+  <br>
+    <p id="notice"><%= notice %></p>
+      <table>
+        <thead">
+          <tr>
+            <th>Date</th>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
 
-<% if @menu_item != nil%>
-<h1>  <%= @menu_item.name%></h1>
-<%else @user != nil%>
-<h1>  <%= @user.first_name%> </h1>
-  <%end%>
-
-<br>
-      <p id="notice"><%= notice %></p>
-
-          <table>
-            <thead">
-              <tr>
-                <th>Date</th>
-                <th>User</th>
-                <th>Rating</th>
-                <th>Comment</th>
-              </tr>
-            </thead>
-
-            <tbody>
-
-                <tr>
-                  <% @menu_item_reviews.each do |review| %>
-                  <td><%= review.created_at.strftime("%m/%Y")%></td>
-                  <td><%= review.user.first_name %></td>
-                  <td><%= review.rating %></td>
-                  <td><%= review.comment %></td>
-                  </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <br>
-        </div>
+        <tbody>
+          <tr> <% @menu_item_reviews.each do |review| %>
+            <td><%= review.created_at.strftime("%m/%Y")%></td>
+            <td><%= review.user.first_name %></td>
+            <td><%= review.rating %></td>
+            <td><%= review.comment %></td>
+          </tr> <% end %>
+        </tbody>
+      </table>
+  

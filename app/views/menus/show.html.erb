@@ -1,34 +1,40 @@
-<div class= "page-title"><h1>Menu: <%=@menu.name%></h1></div>
+<h1>Menu: <%=@menu.name%></h1>
+  <p><%=@menu.details%></p>
 
- <%=@menu.details%><br><br>
- <%if @menu.restaurant.user_id == session[:user_id]%>
-   <%=link_to "Add Items to Menu", new_menu_menu_item_path(@menu)%><br>
-   <%=link_to "Edit Menu", edit_menu_path(@menu)%>
- <%else%>
- <%end%>
+   <%if @menu.restaurant.user_id == session[:user_id]%>
+     <%=link_to "Add Items to Menu", new_menu_menu_item_path(@menu)%><br>
+     <%=link_to "Edit Menu", edit_menu_path(@menu)%>
+   <%end%>
 
+  <%@menu.menu_items.each do |menu_item| %>
+    <div class= 'menu-item'>
 
+      <p><%= menu_item.name%> - Rating:
+          <%if menu_item.menu_item_reviews.average(:rating) != nil%>
+            <%=link_to menu_item.menu_item_reviews.average(:rating), menu_item_menu_item_reviews_path(menu_item)%></p>
+          <%else%>
+            <%=link_to "Add the First Rating", new_menu_item_menu_item_review_path(menu_item)%>
+          <%end%>
 
-<%@menu.menu_items.each do |menu_item| %>
-<div class= 'menu-item'>
-<p><%= menu_item.name%> - Rating:
-    <%if menu_item.menu_item_reviews.average(:rating) != nil%>
-    <%=link_to menu_item.menu_item_reviews.average(:rating), menu_item_menu_item_reviews_path(menu_item)%></p>
-    <%else%>
-    <%=link_to "Add the First Rating", new_menu_item_menu_item_review_path(menu_item)%>
-    <%end%>
-<p><%= menu_item.description%><br>
-$<%= menu_item.price%><br>
-<span>Chef Speciality:
-<%=check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true if menu_item.chef_specialty%> |</span>
-<span>Vegan:
-<%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true if menu_item.vegan%> |</span>
-<span>Available:
-<%= check_box_tag menu_item.available, menu_item.available, disabled: true if menu_item.available%> </span>
-<p><%=link_to "Edit Menu Item", edit_menu_item_path(menu_item)%></p>
+      <p><%= menu_item.description%><br>
 
-<p><%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%></p>
-</div>
-<%end%>
+      <p>$<%= menu_item.price%></p><br>
 
-<br>
+      <span>Chef Speciality:
+      <%=check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true if menu_item.chef_specialty%> |
+      </span>
+
+      <span>Vegan:
+        <%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true if menu_item.vegan%> |
+      </span>
+
+      <span>Available:
+        <%= check_box_tag menu_item.available, menu_item.available, disabled: true if menu_item.available%>
+      </span>
+
+      <p><%=link_to "Edit Menu Item", edit_menu_item_path(menu_item)%></p>
+
+      <p><%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%></p>
+
+    </div>
+  <%end%>

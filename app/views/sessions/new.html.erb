@@ -1,13 +1,19 @@
 <h1>Sign In</h1>
 
 <%= form_for :user do |f| %>
-<%=f.label :email%>
-<%=f.email_field :email%>
+
+  <div class="field">
+    <%=f.label :email%>
+    <%=f.email_field :email%>
+  </div>
 <br>
 <br>
-<%=f.label :password%>
-<%=f.password_field :password%>
+
+  <div class="field">
+    <%=f.label :password%>
+    <%=f.password_field :password%>
+  </div>
 <br>
 <br>
-<%= f.submit "Sign In"%>
+  <%= f.submit "Sign In"%>
 <%end%>

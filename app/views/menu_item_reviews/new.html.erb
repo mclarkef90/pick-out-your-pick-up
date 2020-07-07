@@ -1,24 +1,23 @@
 <h1><%="Add a Menu Item Review for:"%></h1>
 <h1><%=@menu_item.name%>, at <%=@menu_item.menu.restaurant.name%></h1>
 
-<%= render partial: "layouts/errors", locals: {object: @menu_item_review}%>
+  <%= render partial: "layouts/errors", locals: {object: @menu_item_review}%>
 
-<%= form_with model: @menu_item_review, local: true, :url => menu_item_menu_item_reviews_path(@menu_item) do |f| %>
+  <%= form_with model: @menu_item_review, local: true, :url => menu_item_menu_item_reviews_path(@menu_item) do |f| %>
 
-  <div class="field">
-   <%= f.label :rating %>
-   <%= f.number_field :rating %>
-   <br><br>
+    <div class="field">
+       <%= f.label :rating %>
+       <%= f.number_field :rating %>
+    </div>
 
-  <div class="field">
-   <%= f.label :comment %>
-   <%= f.text_field :comment %>
-    <br><br>
+    <div class="field">
+       <%= f.label :comment %>
+       <%= f.text_area :comment %>
+    </div>
 
-  <%= f.hidden_field :user_id, :value => session[:user_id]%>
-  <%= f.hidden_field :menu_item_id, :value=> params[:menu_item_id]%>
+    <%= f.hidden_field :user_id, :value => session[:user_id]%>
+    <%= f.hidden_field :menu_item_id, :value=> params[:menu_item_id]%>
 
+    <%=f.submit%>
 
-  <%=f.submit%>
-
-   <%end%>
+  <%end%>

@@ -1,17 +1,17 @@
 <h1 style="color: #f5c71a; text-align: center;">Top Rated</h1>
 
 <h2>Restaurants:</h2>
-<%RestaurantReview.top_three.each do |review| %>
-  <%restid= review[0]%>
-  <%avgrate= review[1]%>
-  <%restaurant= Restaurant.find_by(id: restid)%>
-  <h3><%=link_to restaurant.name, restaurant_path(restaurant)%> | <%=avgrate%></h3>
+  <%RestaurantReview.top_three.each do |review| %>
+    <%restid= review[0]%>
+    <%avgrate= review[1]%>
+    <%restaurant= Restaurant.find_by(id: restid)%>
+    <h3><%=link_to restaurant.name, restaurant_path(restaurant)%> | <%=avgrate%></h3>
   <%end%>
 
-<h2>Food:</h2>
-<%MenuItemReview.top_three.each do |review| %>
-  <%itemid= review[0]%>
-  <%avgrate= review[1]%>
-  <%menu_item= MenuItem.find_by(id: itemid)%>
-  <h3><%=link_to menu_item.name, menu_item_review_path(itemid)%> | <%=avgrate%></h3>
+<h2>Menu Items:</h2>
+  <%MenuItemReview.top_three.each do |review| %>
+    <%itemid= review[0]%>
+    <%avgrate= review[1]%>
+    <%menu_item= MenuItem.find_by(id: itemid)%>
+    <h3><%=link_to menu_item.name, menu_item_review_path(itemid)%> | <%=avgrate%></h3>
   <%end%>

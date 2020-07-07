@@ -11,7 +11,7 @@ chinese= Genre.create([{name: "Chinese"}])
 japanese= Genre.create([{name: "Japanese"}])
 indian= Genre.create([{name: "Indian"}])
 bbq= Genre.create([{name: "Barbeque"}])
-mideast= Genre.create([{name: "Middle Eastern"}])
+thai= Genre.create([{name: "Thai"}])
 mexican= Genre.create([{name: "Mexican"}])
 eastern= Genre.create([{name: "Eastern European"}])
 carribean=Genre.create([{name: "Carribean"}])
@@ -52,15 +52,3 @@ goatrev=MenuItemReview.create([{user_id: 1, menu_item_id: 2, rating: 5, comment:
 suprev=MenuItemReview.create([{user_id: 1, menu_item_id: 3, rating: 5, comment: "The dumplings are unbelievable."}])
 caddiesbrunch=MenuItemReview.create([{user_id: 2, menu_item_id: 4, rating: 5, comment: "Sliders are best choice if you are hungry."}])
 texasrev=MenuItemReview.create([{user_id: 1, menu_item_id: 5, rating: 5, comment: "Great beer list. Great wing deal!!"}])
-
-#carts
-one=Cart.create([{user_id: 1}])
-two=Cart.create([{user_id: 2}])
-three=Cart.create([{user_id: 3}])
-
-#takeoutorders
-tacos=TakeOutOrder.create([{cart_id: 1, menu_item_id: 1, quantity: 2}])
-goats=TakeOutOrder.create([{cart_id: 2, menu_item_id: 2, quantity: 1}])
-dumplings=TakeOutOrder.create([{cart_id: 3, menu_item_id: 3, quantity: 3}])
-slides=TakeOutOrder.create([{cart_id: 1, menu_item_id: 4, quantity: 2}])
-wings=TakeOutOrder.create([{cart_id: 1, menu_item_id: 5, quantity: 2}])

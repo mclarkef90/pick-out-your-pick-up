@@ -1,8 +1,8 @@
 <h1>Welcome, <%= @user.first_name%></h1>
 
 <p>Your Account Details</p>
-<p>Email: <%= @user.email%></p>
-<p>First Name: <%= @user.first_name%></p>
-<p>Last Name: <%= @user.last_name%></p>
-<p><%=link_to "Edit Your Account", edit_user_path(@user)%></p>
-<p><%=link_to "Delete Your Account", user_path(@user), method: :delete%></p>
+  <p>Email: <%= @user.email%></p>
+  <p>First Name: <%= @user.first_name%></p>
+  <p>Last Name: <%= @user.last_name%></p>
+  <p><%=link_to "Edit Your Account", edit_user_path(@user)%></p>
+  <p><%=link_to "Delete Your Account", user_path(@user), method: :delete%></p>
