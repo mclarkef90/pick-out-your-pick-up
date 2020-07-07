@@ -9,15 +9,21 @@
     <%=f.collection_select :restaurant_id, Restaurant.all, :id, :name%>
   </div>
 
+  <br>
+
   <div class="field">
     <%=f.label :name%>
     <%=f.text_field :name%>
   </div>
-  
+
+  <br>
+
   <div class="field">
     <%=f.label :details%>
     <%=f.text_area :details%>
   </div>
+
+  <br>
 
   <%= f.submit%>
 

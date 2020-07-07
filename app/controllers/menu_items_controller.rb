@@ -70,5 +70,3 @@ class MenuItemsController < ApplicationController
   def set_menu_item
     @menu_item= MenuItem.find_by(id: params[:id])
   end
-
-end

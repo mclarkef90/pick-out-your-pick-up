@@ -10,10 +10,14 @@
        <%= f.number_field :rating %>
     </div>
 
+    <br>
+
     <div class="field">
        <%= f.label :comment %>
        <%= f.text_area :comment %>
     </div>
+
+    <br>
 
     <%= f.hidden_field :user_id, :value => session[:user_id]%>
     <%= f.hidden_field :menu_item_id, :value=> params[:menu_item_id]%>

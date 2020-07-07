@@ -17,7 +17,7 @@
           <tr>
             <td><%= restaurant.name %></td>
             <% restaurant.menus.each do |menu|%>
-            <td><%= menu.name %></td>
+            <td><%= link_to menu.name, restaurant_menu_path(restaurant, menu) %></td>
             <td><%= link_to "Show", restaurant_menu_path(menu.restaurant, menu) %></td>
             <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
             <td><%= link_to 'Delete', menu_path(menu), method: :delete%></td>
