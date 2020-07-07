@@ -3,19 +3,18 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: [:edit, :update, :destroy]
 
   def new
-    #only available as nested route under restaurant
+    #only available as nested route under menu
       if @menu.restaurant.user_id == current_user.id
         @menu_item= @menu.menu_items.build
       else
         redirect_to home_path
         flash[:message]= "Action not permitted. You are not the restaurant owner."
       end
-    end
   end
 
   def create
-    #only available as nested route under restaurant
-    @menu_item= MenuItem.new(menu_item_params)
+    #only available as nested route under menu
+    @menu_item= @menu.menu_items.build(menu_item_params)
     if @menu_item.save
       redirect_to restaurant_menu_path(@menu.restaurant, @menu)
     else
@@ -70,3 +69,5 @@ class MenuItemsController < ApplicationController
   def set_menu_item
     @menu_item= MenuItem.find_by(id: params[:id])
   end
+
+end

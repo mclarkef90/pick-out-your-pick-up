@@ -10,7 +10,12 @@ class MenuItemReviewsController < ApplicationController
 
   def new
     #only available as nested route under menu_items
-    @menu_item_review= @menu_item.menu_item_reviews.build
+    if @menu_item.menu.restaurant.user_id == current_user.id
+      redirect_to owner_home_path
+      flash[:message]= "Action not permitted. You cannot review your own restaurants."
+    else
+      @menu_item_review= @menu_item.menu_item_reviews.build
+    end
   end
 
   def create

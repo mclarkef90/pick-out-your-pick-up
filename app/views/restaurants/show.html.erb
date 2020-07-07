@@ -6,9 +6,10 @@
 
   <p>Average Rating (out of 5):
    <%if @restaurant.restaurant_reviews.average(:rating) != nil%>
-     <%=link_to @restaurant.restaurant_reviews.average(:rating), restaurant_restaurant_reviews_path(@restaurant)%>
+     <%=@restaurant.restaurant_reviews.average(:rating)%><br>
+     <%=link_to "(See All Reviews)", restaurant_restaurant_reviews_path(@restaurant)%>
   <%else%>
-    <%=link_to "Add the First Rating", new_restaurant_restaurant_review_path(@restaurant)%>
+    <%=link_to "Add the First Rating", new_restaurant_restaurant_review_path(@restaurant) if @restaurant.user_id != current_user.id%>
   <%end%></p>
 
   <%if @restaurant.user_id == current_user.id%>

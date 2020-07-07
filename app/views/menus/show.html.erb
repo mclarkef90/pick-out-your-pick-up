@@ -1,7 +1,8 @@
+<h1><%=@menu.restaurant.name%></h1>
 <h1>Menu: <%=@menu.name%></h1>
   <p><%=@menu.details%></p>
 
-   <%if @menu.restaurant.user_id == session[:user_id]%>
+   <%if @menu.restaurant.user_id == current_user.id%>
      <%=link_to "Add Items to Menu", new_menu_menu_item_path(@menu)%><br>
      <%=link_to "Edit Menu", edit_menu_path(@menu)%>
    <%end%>
@@ -9,16 +10,11 @@
   <%@menu.menu_items.each do |menu_item| %>
     <div class= 'menu-item'>
 
-      <p><%= menu_item.name%> - Rating:
-          <%if menu_item.menu_item_reviews.average(:rating) != nil%>
-            <%=link_to menu_item.menu_item_reviews.average(:rating), menu_item_menu_item_reviews_path(menu_item)%></p>
-          <%else%>
-            <%=link_to "Add the First Rating", new_menu_item_menu_item_review_path(menu_item)%>
-          <%end%>
+      <p><%= menu_item.name%></p>
 
       <p><%= menu_item.description%><br>
 
-      <p>$<%= menu_item.price%></p><br>
+      <p>$<%= menu_item.price%></p>
 
       <span>Chef Speciality:
       <%=check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true if menu_item.chef_specialty%> |
@@ -32,9 +28,19 @@
         <%= check_box_tag menu_item.available, menu_item.available, disabled: true if menu_item.available%>
       </span>
 
-      <p><%=link_to "Edit Menu Item", edit_menu_item_path(menu_item)%></p>
+      <br><br>
 
-      <p><%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%></p>
+      <%if menu_item.menu_item_reviews.average(:rating) != nil%>
+        <p>Rating: <%=menu_item.menu_item_reviews.average(:rating)%> -
+        <%=link_to "(See All Reviews)", menu_item_menu_item_reviews_path(menu_item)%></p>
+      <%else%>
+        <%=link_to "Add the First Review", new_menu_item_menu_item_review_path(menu_item)%>
+      <%end%>
 
+      <% if @menu.restaurant.user_id != current_user.id%>
+        <%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%>
+      <% else %>
+        <%= link_to "Edit Item", edit_menu_item_path(menu_item) if @menu.restaurant.user_id == current_user.id%>
+      <%end%>
     </div>
   <%end%>
