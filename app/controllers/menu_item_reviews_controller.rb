@@ -21,9 +21,12 @@ class MenuItemReviewsController < ApplicationController
   def create
     @menu_item= MenuItem.find_by(id: params[:menu_item_id])
     @menu_item_review= MenuItemReview.new(menu_item_review_params)
-    if @menu_item_review.save
+    byebug
+    if current_user.id != @menu_item.menu.restaurant.user_id
+      @menu_item_review.save
       redirect_to menu_item_menu_item_review_path(@menu_item, @menu_item_review)
     else
+      flash[:message]= "Sorry! You cannot review your own restaurant."
       render :new
     end
   end

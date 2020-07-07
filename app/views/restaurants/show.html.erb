@@ -3,7 +3,14 @@
   <p><%=@restaurant.genre.name%></p>
   <p><%=@restaurant.address_one%> <%=@restaurant.address_two%><br>
   <%=@restaurant.city%>, <%=@restaurant.state%> <%=@restaurant.zipcode%></p>
-  <p>Average Rating (out of 5): <%=@restaurant.restaurant_reviews.average(:rating)%> </p>
+
+  <p>Average Rating (out of 5):
+   <%if @restaurant.restaurant_reviews.average(:rating) != nil%>
+   <%=link_to @restaurant.restaurant_reviews.average(:rating), restaurant_restaurant_reviews_path(@restaurant)%>
+  <%else%>
+  <%=link_to "Add the First Rating", new_restaurant_restaurant_review_path(@restaurant)%>
+  <%end%></p>
+
 
   <%if @restaurant.user_id == current_user.id%>
     <%=link_to "Edit", edit_restaurant_path(@restaurant)%><br>

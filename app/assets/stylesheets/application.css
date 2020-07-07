@@ -58,11 +58,11 @@ body{
 
 #error_explanation {
   width: 400px;
-  border: 2px solid blue;
+  border: 2px solid black;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: white;
 }
 
 h2, h3 {
@@ -70,18 +70,24 @@ h2, h3 {
   text-align: center;
 }
 
+.page-title {
+  color: #f5c71a;
+}
+
 #error_explanation h2 {
+  font-family: Geneva;
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #c00;
-  color: #fff;
+  background-color: black;
+  color: white;
 }
 
 #error_explanation p {
-  color: #333;
+  font-family: Geneva;
+  color: black;
   margin-bottom: 0;
   padding: 5px;
 }
@@ -92,7 +98,7 @@ h2, h3 {
 }
 
 .field{
-  color: red;
+  color: #ff7f50;
 }
 
 .action{
@@ -113,4 +119,18 @@ td {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
+}
+
+.message {
+  color: #f5c71a;
+}
+
+.menu-item{
+  table-layout: auto;
+  width: auto;
+  text-align: center;
+  margin-left:100px;
+  margin-right:100px;
+  border: 1px solid black;
+  margin-bottom: 10px;
 }

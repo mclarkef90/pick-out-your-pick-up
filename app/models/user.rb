@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :carts
   has_many :restaurants
   has_many :restaurant_reviews
   has_many :menu_item_reviews

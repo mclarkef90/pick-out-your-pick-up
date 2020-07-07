@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+ #Application & Sessions
   get '/', to: 'application#home', as: 'home'
-  get '/users/owner_home', to: 'users#owner_home', as: 'owner_home'
-  get '/restaurant_reviews/home', to: 'restaurant_reviews#home', as: 'restaurant_reviews_home'
 
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#create'
@@ -15,35 +14,30 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
-  resources :genres
+  ##User Custom Pages
+  get '/users/owner_home', to: 'users#owner_home', as: 'owner_home'
+  get '/users/reviews', to: 'users#reviews', as: 'reviews_home'
 
-  resources :carts
-  resources :take_out_orders
+  ##Restaurant Custom Page
+  get '/restaurant_reviews/home', to: 'restaurant_reviews#home', as: 'restaurant_reviews_home'
 
-  resources :menu_item_reviews, only: [:index, :show, :edit, :update, :destroy]
-
-
-  resources :restaurant_reviews, only: [:index, :edit, :update, :destroy]
-
-
-  resources :menu_items, only: [:index, :show, :edit, :update, :destroy] do
-    resources :menu_item_reviews, only: [:index, :new, :create, :show]
-  end
-
-  resources :menus, only: [:index, :edit, :update, :destroy] do
-    resources :menu_items, only: [:new, :create, :show]
-  end
+  resources :users
 
   resources :restaurants do
     resources :menus, only: [:new, :create, :show]
     resources :restaurant_reviews, only: [:index, :new, :create, :show]
   end
 
-  resources :users do
-    resources :restaurant_reviews, only: [:index]
-    resources :menu_item_reviews, only: [:index]
+  resources :menu_items, only: [:index, :show, :edit, :update, :destroy] do
+    resources :menu_item_reviews, only: [:index, :new, :create, :show]
   end
 
+  resources :menus, only: [:edit, :update, :destroy] do
+    resources :menu_items, only: [:new, :create, :show]
+  end
 
+  resources :restaurant_reviews, only: [:index, :edit, :update, :destroy]
+
+  resources :menu_item_reviews, only: [:index, :edit, :update, :destroy]
 
 end

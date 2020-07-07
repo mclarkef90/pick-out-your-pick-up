@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    if current_user.restaurant_owner?
+    if restaurant_owner?
       @restaurant= Restaurant.new
     else
       redirect_to home_path
@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    redirect_to restaurants_path if !@restaurant || @restaurant.user_id != session[:user_id]
+    redirect_to restaurants_path if !@restaurant || @restaurant.user_id != current_user.id
     flash[:message]= "Action not permitted."
   end
 
@@ -41,12 +41,12 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    if @restaurant.user_id = current_user.id
-      @restaurant.destroy
-      redirect_to restaurants_path
-    else
+    if @restaurant.user_id != current_user.id
       redirect_to home_path
       flash[:message]="Action not permitted."
+    else
+      @restaurant.destroy
+      redirect_to owner_home_path
     end
   end
 

@@ -4,55 +4,52 @@
     <title>POPU</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-    <body>
     <div class= "title">
       <h1>Pick Out <br> Your Pick Up Order</h1>
     </div>
-
+    
     <div class= "navbar">
-
       <% if logged_in? && restaurant_owner? %>
-      <ul>
-    <li>  <%= link_to "Search Restaurants", restaurants_path%></li>
-    <li>   <%= link_to "Top Rated", restaurant_reviews_home_path%></li>
-    <li>   <%= link_to "Your Reviews", user_restaurant_reviews_path(current_user.id)%></li>
-    <li>   <%= link_to "Manage Your Restaurants", owner_home_path %></li>
-    <li>   <%= link_to "Sign Out", signout_path, method: 'delete' %></li>
-      </ul>
+        <ul>
+          <li><%= link_to "Home", user_path(current_user.id) %></li>
+          <li><%= link_to "Search Restaurants", restaurants_path%></li>
+          <li><%= link_to "Top Rated", restaurant_reviews_home_path%></li>
+          <li><%= link_to "Your Reviews", reviews_home_path%></li>
+          <li><%= link_to "Manage Your Restaurants", owner_home_path %></li>
+          <li><%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+        </ul>
 
-      <%elsif logged_in? %>
-      <ul>
-    <li>   <%= link_to "Search Restaurants", restaurants_path%></li>
-    <li>   <%= link_to "Top Rated", restaurant_reviews_home_path%></li>
-    <li>   <%= link_to "Your Reviews", user_restaurant_reviews_path(current_user.id)%></li>
-    <li>   <%= link_to "Sign Out", signout_path, method: 'delete' %></li>
-      </ul>
+      <%elsif logged_in? && current_user %>
+        <ul>
+          <li><%= link_to "Home", user_path(current_user.id) %></li>
+          <li><%= link_to "Search Restaurants", restaurants_path%></li>
+          <li><%= link_to "Top Rated", restaurant_reviews_home_path%></li>
+          <li><%= link_to "Your Reviews", reviews_home_path%></li>
+          <li><%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+        </ul>
 
-
-
-      <%else%>
-      <ul>
-      <li> <%= link_to "Sign Up", signup_path%></li>
-      <li> <%= link_to "Sign In", signin_path%></li>
-      <li> <%= link_to "Google Sign Up/In", '/auth/google_oauth2'%></li>
-      </ul>
+        <%else%>
+          <ul>
+          <li> <%= link_to "Sign Up", signup_path%></li>
+          <li> <%= link_to "Sign In", signin_path%></li>
+          <li> <%= link_to "Google Sign Up/In", '/auth/google_oauth2'%></li>
+          </ul>
       <%end%>
     </div>
 
-    <div>
+    <div class = "message">
+      <br>
       <% if flash[:message] %>
         <%= flash[:message] %>
       <%end%>
+    </div>
 
-      <%=@error%>
-      </div>
+    <%=@error%>
 
     <%= yield %>
 

@@ -1,15 +1,14 @@
 class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
 
-  def index
-  end
-
   def new
     if params[:menu_id] && @menu= Menu.find_by(id: params[:menu_id])
-      @menu_item= @menu.menu_items.build
-    else
-      redirect_to home_path
-      flash[:message]= "Action not permitted."
+      if @menu.restaurant.user_id == current_user.id
+        @menu_item= @menu.menu_items.build
+      else
+        redirect_to home_path
+        flash[:message]= "Action not permitted. You are not the restaurant owner."
+      end
     end
   end
 
@@ -24,26 +23,28 @@ class MenuItemsController < ApplicationController
   end
 
   def edit
-    redirect_to menus_path if @menu_item.menu.restaurant.user_id != session[:user_id]
-    flash[:message]= "Action not permitted."
+    if @menu_item.menu.restaurant.user_id != current_user.id
+      redirect_to menus_path
+      flash[:message]= "Action not permitted. You are not the restaurant owner."
+    end
   end
 
   def update
     @menu_item.update(menu_item_params)
     if @menu_item.save
-      redirect_to menu_menu_item_path(@menu_item.menu, @menu_item)
+      redirect_to restaurant_menu_path(@menu_item.menu.restaurant, @menu_item.menu)
     else
       render :edit
     end
   end
 
   def destroy
-    if @menu_item.menu.restaurant.user_id == session[:user_id]
-      @menu_item.destroy
-      redirect_to menus_path
-    else
+    if @menu_item.menu.restaurant.user_id != current_user.id
       redirect_to home_path
-      flash[:message]="Action not permitted."
+      flash[:message]="Action not permitted. You are not the restaurant owner."
+    else
+      @menu_item.destroy
+      redirect_to restaurant_menu_path(@menu_item.menu.restaurant, @menu_item.menu)
     end
   end
 
