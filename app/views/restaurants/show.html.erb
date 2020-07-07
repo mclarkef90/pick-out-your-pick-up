@@ -5,11 +5,10 @@
   <%=@restaurant.city%>, <%=@restaurant.state%> <%=@restaurant.zipcode%></p>
   <p>Average Rating (out of 5): <%=@restaurant.restaurant_reviews.average(:rating)%> </p>
 
-
-
-<%if @restaurant.user_id == current_user.id%>
-  <%=link_to "Edit", edit_restaurant_path(@restaurant)%>
-<%end%>
+  <%if @restaurant.user_id == current_user.id%>
+    <%=link_to "Edit", edit_restaurant_path(@restaurant)%><br>
+    <%=link_to "Add New Restaurant Menu", new_restaurant_menu_path(@restaurant)%>
+  <%end%>
 
 <h1>Menus</h1>
 
@@ -17,11 +16,8 @@
   <p><%= link_to menu.name, restaurant_menu_path(@restaurant, menu)%></p>
   <%end%>
 
-<%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
-
-<p><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></p>
-
-
 <% if @restaurant.user_id == session[:user_id]%>
-<%=link_to "Add New Restaurant Menu", new_restaurant_menu_path(@restaurant)%>
+<%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
+<% else%>
+<p><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></p>
 <%end%>

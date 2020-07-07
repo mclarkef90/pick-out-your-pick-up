@@ -17,7 +17,7 @@ class MenuItemsController < ApplicationController
     @menu= Menu.find_by(id: params[:menu_id])
     @menu_item= MenuItem.new(menu_item_params)
     if @menu_item.save
-      redirect_to menu_menu_item_path(@menu, @menu_item)
+      redirect_to restaurant_menu_path(@menu.restaurant, @menu)
     else
       render :new
     end
