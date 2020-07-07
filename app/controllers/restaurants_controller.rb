@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
       @restaurant= Restaurant.new
     else
       redirect_to home_path
-      flash[:message]= "Action not permitted."
+      flash[:message]= "Action not permitted. Invalid credentials."
     end
   end
 
@@ -27,8 +27,10 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    redirect_to restaurants_path if !@restaurant || @restaurant.user_id != current_user.id
-    flash[:message]= "Action not permitted."
+    if !@restaurant || @restaurant.user_id != current_user.id
+      redirect_to restaurants_path
+      flash[:message]= "Action not permitted. You do not own this restaurant."
+    end
   end
 
   def update

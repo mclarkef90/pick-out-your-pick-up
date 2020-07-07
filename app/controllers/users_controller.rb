@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy, :show]
+  before_action :set_and_verify_user, only: [:edit, :update, :destroy, :show]
 
   def new
     @user= User.new
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to home_path if !@user || @user.id != current_user.id
   end
 
   def update
@@ -30,22 +29,22 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if !@user || @user.id != current_user.id
-      redirect_to home_path
-    else @user.destroy
+    @user.destroy
         redirect_to home_path
-    end
   end
 
   def show
-    redirect_to home_path if !@user || @user.id != session[:user_id]
   end
 
+  #Custom
+
   def owner_home
+    redirect_if_not_logged_in
     @restaurants= current_user.restaurants.all
   end
 
   def reviews
+    redirect_if_not_logged_in
     @restaurant_reviews= current_user.restaurant_reviews.all
     @menu_item_reviews= current_user.menu_item_reviews.all
   end
@@ -62,8 +61,12 @@ class UsersController < ApplicationController
     )
   end
 
-  def set_user
+  def set_and_verify_user
     @user= User.find_by(id: params[:id])
+    if !@user || @user != current_user
+      redirect_to home_path
+      flash[:message] = "Action not permitted. You do not own this account."
+    end
   end
 
 end

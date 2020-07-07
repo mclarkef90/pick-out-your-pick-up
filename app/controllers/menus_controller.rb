@@ -1,20 +1,20 @@
 class MenusController < ApplicationController
   before_action :redirect_if_not_logged_in
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:new, :create, :show]
+  before_action :set_menu, only: [:edit, :update, :destroy, :show]
 
   def new
-    if params[:restaurant_id] && @restaurant= Restaurant.find_by(id: params[:restaurant_id])
+    #only available as nested route under restaurant
       if @restaurant.user_id == current_user.id
         @menu= @restaurant.menus.build
       else
         redirect_to home_path
         flash[:message]= "Action not permitted. You are not the restaurant owner."
       end
-    end
   end
 
   def create
-    @restaurant= Restaurant.find_by(id: params[:restaurant_id])
+    #only available as nested route under restaurant
     @menu= @restaurant.menus.build(menu_params)
     if @menu.save
       redirect_to restaurant_menu_path(@restaurant, @menu)
@@ -24,7 +24,7 @@ class MenusController < ApplicationController
   end
 
   def edit
-    if @menu.restaurant.user_id != current_user.id
+    if !@menu || @menu.restaurant.user_id != current_user.id
       redirect_to owner_home_path
       flash[:message]= "Action not permitted. You are not the restaurant owner."
     end
@@ -61,6 +61,10 @@ class MenusController < ApplicationController
       :category,
       :details
     )
+  end
+
+  def set_restaurant
+    @restaurant= Restaurant.find_by(id: params[:restaurant_id])
   end
 
   def set_menu

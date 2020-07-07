@@ -28,16 +28,16 @@ Rails.application.routes.draw do
     resources :restaurant_reviews, only: [:index, :new, :create, :show]
   end
 
-  resources :menu_items, only: [:index, :show, :edit, :update, :destroy] do
+  resources :menu_items, only: [:edit, :update, :destroy] do
     resources :menu_item_reviews, only: [:index, :new, :create, :show]
   end
 
   resources :menus, only: [:edit, :update, :destroy] do
-    resources :menu_items, only: [:new, :create, :show]
+    resources :menu_items, only: [:new, :create]
   end
 
-  resources :restaurant_reviews, only: [:index, :edit, :update, :destroy]
+  resources :restaurant_reviews, only: [:edit, :update, :destroy]
 
-  resources :menu_item_reviews, only: [:index, :edit, :update, :destroy]
+  resources :menu_item_reviews, only: [:edit, :update, :destroy]
 
 end

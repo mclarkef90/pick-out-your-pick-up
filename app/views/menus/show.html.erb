@@ -19,9 +19,12 @@
     <%end%>
 <p><%= menu_item.description%><br>
 $<%= menu_item.price%><br>
-Chef Specialty: <%= check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true %>
-Vegan: <%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true %>
-Available: <%= check_box_tag menu_item.available, menu_item.available, disabled: true%></p>
+<span>Chef Speciality:
+<%=check_box_tag menu_item.chef_specialty, menu_item.chef_specialty, disabled: true if menu_item.chef_specialty%> |</span>
+<span>Vegan:
+<%= check_box_tag menu_item.vegan, menu_item.vegan, disabled: true if menu_item.vegan%> |</span>
+<span>Available:
+<%= check_box_tag menu_item.available, menu_item.available, disabled: true if menu_item.available%> </span>
 <p><%=link_to "Edit Menu Item", edit_menu_item_path(menu_item)%></p>
 
 <p><%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%></p>

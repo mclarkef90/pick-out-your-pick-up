@@ -1,44 +1,4 @@
 <h1>All Restaurant Reviews </h1>
-
-<% if  @user != nil%>
-<h1>by:  <%= @user.first_name%> </h1>
-      <p id="notice"><%= notice %></p>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Restaurant Name</th>
-                <th>Rating</th>
-                <th>Comment</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @restaurant_reviews.each do |review| %>
-                <tr>
-                  <td><%= review.created_at.strftime("%m/%Y")%></td>
-                  <td>
-                    <%Restaurant.all.map do |restaurant| %>
-                      <%if restaurant.id == review.restaurant_id%>
-                        <%=restaurant.name%>
-                      <%end%>
-                    <%end%>
-                  <td><%= review.rating %></td>
-                  <td><%= review.comment %></td>
-                  <td><%= link_to 'Edit', edit_restaurant_review_path(review) %></td>
-                  <td><%= link_to 'Delete', restaurant_review_path(review), method: :delete%></td>
-                  <%end%>
-                </tr>
-
-
-            </tbody>
-          </table>
-          <br>
-        </div>
-
-<%else @restaurant != nil%>
 <h1>for:  <%= @restaurant.name%></h1>
 
       <p id="notice"><%= notice %></p>
@@ -65,4 +25,3 @@
           </table>
           <br>
         </div>
-<%end%>
