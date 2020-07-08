@@ -5,23 +5,9 @@
 
   <%= form_with model: @restaurant_review, local: true, :url => restaurant_restaurant_reviews_path(@restaurant) do |f| %>
 
-    <div class="field">
-     <%= f.label :rating %>
-     <%= f.number_field :rating %>
-    </div>
-
-    <br>
-
-    <div class="field">
-     <%= f.label :comment %>
-     <%= f.text_area :comment %>
-    </div>
-
-    <br>
+  <%= render partial: "review_fields", locals: {f: f}%>
 
     <%= f.hidden_field :user_id, :value => session[:user_id]%>
     <%= f.hidden_field :restaurant_id, :value=> params[:restaurant_id]%>
-
-    <%=f.submit%>
 
   <%end%>

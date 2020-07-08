@@ -5,20 +5,6 @@
 
 <%= form_with model: @restaurant_review, local: true do |f| %>
 
-  <div class="field">
-   <%= f.label :rating %>
-   <%= f.number_field :rating %>
-  </div>
-
-  <br>
-
-  <div class="field">
-   <%= f.label :comment %>
-   <%= f.text_area :comment %>
-  </div>
-
-  <br>
-
-<%=f.submit%>
+<%= render partial: "review_fields", locals: {f: f}%>
 
 <%end%>

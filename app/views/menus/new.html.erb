@@ -4,27 +4,6 @@
 
 <%= form_with model: @menu, local: true, :url => restaurant_menus_path(@restaurant) do |f| %>
 
-  <div class="field"%>
-    <%=f.label :restaurant_id%>
-    <%=f.collection_select :restaurant_id, Restaurant.all, :id, :name%>
-  </div>
-
-  <br>
-
-  <div class="field">
-    <%=f.label :name%>
-    <%=f.text_field :name%>
-  </div>
-
-  <br>
-
-  <div class="field">
-    <%=f.label :details%>
-    <%=f.text_area :details%>
-  </div>
-
-  <br>
-
-  <%= f.submit%>
+<%= render partial: "menu_fields", locals: {f: f}%>
 
 <%end%>

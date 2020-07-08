@@ -4,41 +4,8 @@
 
 <%= form_with model: @menu_item, local: true, :url => menu_menu_items_path(@menu) do |f| %>
 
-  <div class="field">
-   <%= f.label :name %>
-   <%= f.text_field :name %>
-  </div>
+<%= render partial: "item_fields", locals: {f: f}%>
 
-  <br>
-
-  <div class="field">
-   <%= f.label :description %>
-   <%= f.text_area :description %>
-  </div>
-
-  <br>
-
-  <div class="field">
-   <%= f.label :price%>
-   <%= f.text_field :price%>
-  </div>
-
-  <br>
-
-  <%= f.label :chef_specialty%>
-  <%= f.check_box :chef_specialty%>
-  <br>
-
-  <%= f.label :vegan%>
-  <%= f.check_box :vegan%>
-  <br>
-
-  <%= f.label :available%>
-  <%= f.check_box :available%>
-  <br>
-
-  <%= f.hidden_field :menu_id, :value=> params[:menu_id]%>
-
-  <%=f.submit%>
+<%= f.hidden_field :menu_id, :value=> params[:menu_id]%>
 
 <%end%>
