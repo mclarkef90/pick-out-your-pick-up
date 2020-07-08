@@ -30,17 +30,17 @@
 
       <br><br>
 
-      <%if menu_item.menu_item_reviews.average(:rating) != nil%>
-        <p>Rating: <%=menu_item.menu_item_reviews.average(:rating)%> -
-        <%=link_to "(See All Reviews)", menu_item_menu_item_reviews_path(menu_item)%></p>
+      <p><%if menu_item.menu_item_reviews.average(:rating) != nil%>
+        Rating: <%=menu_item.menu_item_reviews.average(:rating)%> -
+        <%=link_to "(See All Reviews)", menu_item_menu_item_reviews_path(menu_item)%>
       <%else%>
-        <%=link_to "Add the First Review", new_menu_item_menu_item_review_path(menu_item)%>
-      <%end%>
+        <%=link_to "Add the First Review", new_menu_item_menu_item_review_path(menu_item) if @menu.restaurant.user_id != current_user.id%>
+      <%end%></p>
 
-      <% if @menu.restaurant.user_id != current_user.id%>
-        <%=link_to "Add a Review", new_menu_item_menu_item_review_path(@menu, menu_item)%>
-      <% else %>
-        <%= link_to "Edit Item", edit_menu_item_path(menu_item) if @menu.restaurant.user_id == current_user.id%>
-      <%end%>
+      <p><% if @menu.restaurant.user_id != current_user.id%>
+      <%=link_to "Add a Review", new_menu_item_menu_item_review_path(menu_item)%><br>
+      <%else%>
+      <%= link_to "Edit Item", edit_menu_item_path(menu_item) %>
+      <%end%></p>
     </div>
   <%end%>

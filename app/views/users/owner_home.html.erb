@@ -16,7 +16,7 @@
         <% @restaurants.each do |restaurant| %>
           <% restaurant.menus.each do |menu|%>
           <tr>
-            <td><%= restaurant.name %></td>
+            <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
             <td><%= link_to menu.name, restaurant_menu_path(restaurant, menu) %></td>
             <td><%= link_to "Show", restaurant_menu_path(menu.restaurant, menu) %></td>
             <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
