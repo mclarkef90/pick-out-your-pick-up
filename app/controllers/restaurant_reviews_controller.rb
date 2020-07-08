@@ -1,7 +1,7 @@
 class RestaurantReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
   before_action :set_restaurant, only: [:index, :new, :create]
-  before_action :set_restaurant_review, only: [:edit, :update, :delete]
+  before_action :set_restaurant_review, only: [:edit, :update, :destroy]
 
   def index
     #only available as nested route under restaurant

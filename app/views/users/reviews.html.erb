@@ -19,7 +19,7 @@
 
           <tr>
             <td><%= review.created_at.strftime("%m/%d/%Y")%></td>
-            <td><%=review.restaurant.name%></td>
+            <td><%=link_to review.restaurant.name, restaurant_path(review.restaurant)%></td>
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>
             <td><%= link_to 'Edit', edit_restaurant_review_path(review) %></td>
@@ -48,7 +48,7 @@
           <tr>
             <% @menu_item_reviews.each do |review| %>
             <td><%= review.created_at.strftime("%m/%d/%Y")%></td>
-            <td><%= review.menu_item.menu.restaurant.name %></td>
+            <td><%= link_to review.menu_item.menu.restaurant.name, restaurant_path(review.menu_item.menu.restaurant) %></td>
             <td><%= review.menu_item.name %></td>
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>

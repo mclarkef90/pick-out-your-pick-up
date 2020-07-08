@@ -26,5 +26,5 @@
   <% if @restaurant.user_id == session[:user_id]%>
     <%=link_to "See All Reviews", restaurant_restaurant_reviews_path(@restaurant)%>
   <% else%>
-    <p><%=link_to "Add A Review", new_restaurant_restaurant_review_path(@restaurant)%></p>
+    <p><%=link_to "Add A Review for #{@restaurant.name}", new_restaurant_restaurant_review_path(@restaurant)%></p>
   <%end%>
