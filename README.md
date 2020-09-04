@@ -1,21 +1,31 @@
-Welcome to Pick Out Your Pick Up
+Pick Out Your Pick Up
 
-Keep your recipes organized with Recipe Box. Recipe Box allows you to create a user account, create and save as many recipes as you'd like, and view other user recipes. Don't waste time trying to keep hard copies of recipes, and don't waste space with recipe books and boxes. Save your favorites in Recipe Box and easily access them again when it is time to cook.
+Pick Out Your Pick Up is a site that enables restaurant owners to list their business information and menus so site users can in turn learn about their restaurants and leave a rating and/or review.
 
-Installation Add this line to your application's Gemfile:
+The rating aspect of the site is designed to provide recommendations for restaurants and menu items based on reviews. All user ratings are compiled to generate an average rating, then the highest are displayed on the "Top Rated" page.
 
-gem 'popu' And then execute:
+Technologies
+Rails 6
 
-$ bundle Or install it yourself as:
+## Using Pick Out Your Pick Up
 
-$ gem install recipe-box Usage TODO: Write usage instructions here
+To use Pick Out Your Pick Up, follow these steps:
+1. Follow this Link-
+2.Create an Account or Log In To Your Existing Account
+3. Select "Search Restaurants" from the NavBar to search and find restaurants based on name, location, or food type.
+4. Select "Top Rated" to see the restaurants and menu items with the highest average ratings.
+5. Click a restaurant name to see its general information and menus or add a review. Click on a menu name to see the full menu and add a review for a specific menu item.
+6.To edit or delete a review that you wrote, select "Your Reviews" from the NavBar.
+7. When finished, log out.
 
-Development After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
+##Video Walk Through
+[![Pick Out Your Pick Up](https://9to5google.com/wp-content/uploads/sites/4/2018/09/youtube_logo_dark.jpg)](https://youtu.be/WExRFmxXNZo)
 
-To install this gem onto your local machine, run bundle exec rake install. To release a new version, update the version number in version.rb, and then run bundle exec rake release, which will create a git tag for the version, push git commits and tags, and push the .gem file to rubygems.org.
 
-Contributing Bug reports and pull requests are welcome on GitHub at https://github.com/'reliable-convention-1102'/weather_watcher. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+## Contact
 
-License The gem is available as open source under the terms of the MIT License.
+If you want to contact me, you can reach me at morgancfarrow@gmail.com.
 
-Code of Conduct Everyone interacting in the WeatherWatcher project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+## License
+
+This project uses the following license: MIT License.
