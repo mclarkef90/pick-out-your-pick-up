@@ -19,7 +19,7 @@ To use Pick Out Your Pick Up, follow these steps:
 7. When finished, log out.
 
 ##Video Walk Through
-[![Pick Out Your Pick Up](https://9to5google.com/wp-content/uploads/sites/4/2018/09/youtube_logo_dark.jpg){:height="50%" width="50%"}](https://youtu.be/WExRFmxXNZo)
+[![Pick Out Your Pick Up](https://pngimg.com/uploads/youtube/youtube_PNG17.png)](https://youtu.be/WExRFmxXNZo)
 
 
 ## Contact
