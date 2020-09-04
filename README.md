@@ -18,7 +18,8 @@ To use Pick Out Your Pick Up, follow these steps:
 6.To edit or delete a review that you wrote, select "Your Reviews" from the NavBar.
 7. When finished, log out.
 
-##Video Walk Through
+##Video Walk Through (Click the Icon Below)
+
 [![Pick Out Your Pick Up](https://pngimg.com/uploads/youtube/youtube_PNG17.png)](https://youtu.be/WExRFmxXNZo)
 
 
